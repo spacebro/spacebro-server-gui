@@ -1,6 +1,6 @@
 {
   "name": "spacebro-server-gui",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "hugohil <hilairehugo@gmail.com>",
   "description": "A GUI for spacebro-server",
   "license": null,
