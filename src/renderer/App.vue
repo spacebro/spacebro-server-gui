@@ -2,8 +2,9 @@
   <div id="app">
     <label for="port">port:</label>
     <input type="number" v-model="port" id="port">
-    <pre>ip: {{ ip }}</pre>
-    <button type="button" @click="initSpacebro">start server</button>
+    <pre>ip: <span>{{ ip }}</span></pre>
+    <button type="button" :disabled="started" @click="initSpacebro">start server</button>
+    <div class="info" v-show="started">server started</div>
   </div>
 </template>
 
@@ -15,7 +16,8 @@
     data () {
       return {
         ip: '127.0.0.1',
-        port: 8888
+        port: 8888,
+        started: false
       }
     },
     mounted () {
@@ -24,6 +26,7 @@
     methods: {
       initSpacebro () {
         require('electron').ipcRenderer.send('init-server', this.port)
+        this.started = true
       }
     }
   }
@@ -48,13 +51,16 @@
     margin: 1em auto;
     text-align: center;
   }
-  input, pre {
-    margin: 1em 0;
+  input, pre, #app > div {
+    margin: 1em auto;
   }
   pre {
     background: #0F0F0F;
     padding: 1em;
     width: 80%;
+  }
+  pre > span {
+    user-select: auto;
   }
   button {
     padding: 0.15em 1em 0.3em;
