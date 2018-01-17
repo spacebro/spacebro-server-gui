@@ -1,0 +1,65 @@
+{
+  "customSetting" : "defaultCustomSetting",
+  "window" : {
+    "width": 500,
+    "height": 300,
+    "autoHideMenuBar": true,
+    "webPreferences": {
+      "plugins": true,
+      "directWrite": true,
+      "webSecurity": false,
+      "experimentalFeatures": false,
+      "experimentalCanvasFeatures": false,
+      "allowRunningInsecureContent": true,
+      "allowDisplayingInsecureContent": true
+    }
+  },
+  "appendSwitch": {
+    "--disable-pinch": "",
+    "--disable-touch-adjustment": "",
+    "--touch-events": ""
+  },
+  "service": {
+    "spacebro":{
+      "host": "spacebro.space",
+      "port": 3333,
+      "channelName": "media-stream",
+      "client": {
+        "name": "vue-example",
+        "description": "exemple app",
+				"in": {
+					"inMedia": {
+						"eventName": "inMedia",
+						"description": "Input media",
+						"type": "all"
+					},
+					"inMessage": {
+						"eventName": "inMessage",
+						"description": "Input message",
+						"type": "all"
+					}
+				},
+				"out": {
+					"outMedia": {
+						"eventName": "outMedia",
+						"description": "Output media",
+						"type": "all"
+					},
+					"outMessage": {
+						"eventName": "outMessage",
+						"description": "Output message",
+						"type": "all"
+					}
+        }
+      },
+      "connection": [
+        "vue-example/outMedia => vue-example/inMedia",
+        "vue-example/outMessage => vue-example/inMessage"
+      ]
+    }
+  },
+  "appendArgument": [
+    "--overscroll-history-navigation=0",
+    "--ignore-gpu-blacklist"
+  ]
+}
